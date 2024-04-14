@@ -9,6 +9,8 @@ Code128Item::Code128Item() :
     m_Height(80),
     m_CodeLength(0)
 {
+    m_TextColour = Qt::black;
+    m_BarcodeColour = Qt::black;
 }
 
 void Code128Item::setText(const QString &text)
@@ -74,6 +76,7 @@ void Code128Item::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     float fontHeight = painter->fontMetrics().height();
 
     float left = 0;
+    QBrush barbrush = QBrush(m_BarcodeColour, Qt::SolidPattern);
     for (int i=0;i<m_Code.length();i++)
     {
 
@@ -82,7 +85,7 @@ void Code128Item::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
         if ( i % 2 == 0 )
         {
             QRectF bar(left, 0, width, m_Height - fontHeight );
-            painter->fillRect(bar, Qt::SolidPattern);
+            painter->fillRect(bar, barbrush);
         }
 
         left+= width;
@@ -91,7 +94,17 @@ void Code128Item::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     if ( m_TextVisible )
     {
         QRectF box(0, m_Height - fontHeight , left, fontHeight);
+        painter->setPen(m_TextColour);
         painter->drawText(box, m_Text, Qt::AlignHCenter | Qt::AlignVCenter);
     }
 }
 
+void Code128Item::setTextColour(QColor c)
+{
+    m_TextColour = c;
+}
+
+void Code128Item::setBarcodeColour(QColor c)
+{
+    m_BarcodeColour = c;
+}

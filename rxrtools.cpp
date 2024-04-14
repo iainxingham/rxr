@@ -12,7 +12,15 @@ bool validate_rxr(QString r)
 
 QString clean_rxr(QString r)
 {
-    return r.trimmed().toUpper();
+    static QRegularExpression re("^(RXR)?\\s*(\\d\\d\\d\\d\\d\\d\\d)$", QRegularExpression::CaseInsensitiveOption);
+
+    QRegularExpressionMatch m = re.match(r.trimmed().toUpper());
+    if (m.hasMatch()) {
+        if (m.hasCaptured(1)) return m.captured(1) + m.captured(2);
+        return m.captured(2);
+    }
+
+    return r;   // Should be an error string?
 }
 
 bool has_rxr(QString r)

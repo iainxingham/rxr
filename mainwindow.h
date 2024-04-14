@@ -4,6 +4,9 @@
 #include <QMainWindow>
 
 #include <QGraphicsScene>
+
+//#include <memory.h>
+
 #include "code128/code128item.h"
 
 QT_BEGIN_NAMESPACE
@@ -49,6 +52,7 @@ private:
     Ui::MainWindow *ui;
 
     QGraphicsScene barcodeScene;
+    //std::unique_ptr<Code128Item> m_Barcode;
     Code128Item *m_Barcode;
 
     QString lastRXR;

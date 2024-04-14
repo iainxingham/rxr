@@ -13,6 +13,8 @@ class Code128Item : public QGraphicsItem
     Code128::BarCode m_Code;
     int m_CodeLength;
     bool m_HighDPI;
+    QColor m_TextColour;
+    QColor m_BarcodeColour;
 
 public:
     Code128Item();
@@ -21,6 +23,9 @@ public:
     void setHeight( float height );
     void setTextVisible( bool visible );
     void setHighDPI(bool highDPI);
+
+    void setTextColour(QColor c);
+    void setBarcodeColour(QColor c);
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget * widget);

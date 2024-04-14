@@ -20,9 +20,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->barcode_gv->setScene(&barcodeScene);
 
     m_Barcode = new Code128Item();
+    //m_Barcode = std::make_unique<Code128Item>();
     m_Barcode->setWidth(300);
     m_Barcode->setHeight(120);
     m_Barcode->setPos(0, 0);
+
+    m_Barcode->setTextColour(Qt::blue);
+    m_Barcode->setBarcodeColour(Qt::black);
+
     barcodeScene.addItem(m_Barcode);
     barcodeScene.update();
     m_Barcode->update();
@@ -33,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete m_Barcode;
     delete ui;
 }
 
@@ -54,6 +60,7 @@ void MainWindow::on_barcode_but_clicked()
     if(validate_rxr(ui->rxr_le->text())) {
         QString r(clean_rxr(ui->rxr_le->text()));
         m_Barcode->setText(r);
+        ui->rxr_le->setText(r);
         update_last_RXR(r);
     }
 
@@ -108,7 +115,9 @@ void MainWindow::clear_RXR()
 
 void MainWindow::on_clear_but_clicked()
 {
-    update_last_RXR("");
+    if (currentRXR != "") {
+        lastRXR = currentRXR;
+    }
     clear_RXR();
 }
 
@@ -125,7 +134,7 @@ void MainWindow::on_paste_but_clicked()
     QString r = clip->text();
 
     if (validate_rxr(r)) {
-        ui->rxr_le->setText(r);
+        ui->rxr_le->setText(clean_rxr(r));
         on_barcode_but_clicked();
     }
     else {
