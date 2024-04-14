@@ -35,6 +35,10 @@ QString chop_rxr(QString r)
 QString toggle_rxr(QString r)
 {
     if (has_rxr(r)) return chop_rxr(r);
+    return "RXR" + r;
+}
 
+QString add_rxr(QString r)
+{
     return "RXR" + r;
 }

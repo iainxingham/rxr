@@ -78,7 +78,8 @@
     </rect>
    </property>
    <property name="text">
-    <string>Qt (&lt;href a=https://www.qt.io/&gt;https://www.qt.io/&lt;/href&gt;)</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Qt (&lt;a href=&quot;https://www.qt.io/&quot;&gt;&lt;span style=&quot; text-decoration: underline;
+    color:#926ee4;&quot;&gt;https://www.qt.io/&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;)</string>
    </property>
    <property name="textFormat">
     <enum>Qt::TextFormat::RichText</enum>
@@ -94,7 +95,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Code 128 (&lt;href a=https://github.com/promixis/Code128&gt;https://github.com/promixis/Code128&lt;/href&gt;)</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Code 128 (&lt;a href=&quot;https://github.com/promixis/Code128&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#926ee4;&quot;&gt;https://github.com/promixis/Code128&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="textFormat">
     <enum>Qt::TextFormat::RichText</enum>
