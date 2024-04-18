@@ -9,5 +9,6 @@ bool has_rxr(QString r);
 QString chop_rxr(QString r);
 QString toggle_rxr(QString r);
 QString add_rxr(QString r);
+QString strip_mrn(QString r);
 
 #endif // RXRTOOLS_H

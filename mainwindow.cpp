@@ -131,7 +131,7 @@ void MainWindow::on_last_but_clicked()
 void MainWindow::on_paste_but_clicked()
 {
     QClipboard *clip = QGuiApplication::clipboard();
-    QString r = clip->text();
+    QString r = strip_mrn(clip->text());
 
     if (validate_rxr(r)) {
         ui->rxr_le->setText(clean_rxr(r));

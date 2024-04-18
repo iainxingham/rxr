@@ -50,3 +50,12 @@ QString add_rxr(QString r)
 {
     return "RXR" + r;
 }
+
+QString strip_mrn(QString r)
+{
+    static QRegularExpression re("^(MRN:)(\\w+)");
+
+    QRegularExpressionMatch m = re.match(r.trimmed());
+    if (m.hasMatch()) return m.captured(2);
+    return r;
+}
